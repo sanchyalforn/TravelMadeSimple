@@ -6,3 +6,17 @@
     margin: 0 auto;
     max-width: 500px;
 }
+
+.background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    background-image: url('../../images/travel.jpg');
+    background-repeat  : 'no-repeat';
+    background-position: 'center';
+    background-size: 100% 110%;
+    opacity: 0.5;
+    z-index: -9999;
+}

@@ -26,25 +26,29 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="Login">
-            
-            <h1>Welcome to Travel Made Simple</h1>
+            <div>
+                <div className="background"/>
+                <div className="Login">
+                
+                <h1>Welcome to Travel Made Simple</h1>
 
-                <form onSubmit={this.handleSubmit}>                    
-                    <FormGroup controlId="username" bsSize="large">
-                        <label>Username</label>
-                        <FormControl autoFocus value={this.state.email} onChange={this.handleChange}/>
-                    </FormGroup>
-                    
-                    <FormGroup controlId="password" bsSize="large">
-                        <label>Password</label>
-                        <FormControl type="password" value={this.state.password} onChange={this.handleChange}/>
-                    </FormGroup>
-                    
-                    <Button block bsSize="large" onClick = {this.login} type="submit">Login</Button>
-                    <Button block variant="secondary" bsSize="large" onClick = {this.register} type="button">Register</Button>
-                </form>
+                    <form onSubmit={this.handleSubmit}>                    
+                        <FormGroup controlId="username" bsSize="large">
+                            <label>Username</label>
+                            <FormControl autoFocus value={this.state.email} onChange={this.handleChange}/>
+                        </FormGroup>
+                        
+                        <FormGroup controlId="password" bsSize="large">
+                            <label>Password</label>
+                            <FormControl type="password" value={this.state.password} onChange={this.handleChange}/>
+                        </FormGroup>
+                        
+                        <Button block bsSize="large" onClick = {this.login} type="submit">Login</Button>
+                        <Button block variant="secondary" bsSize="large" onClick = {this.register} type="button">Register</Button>
+                    </form>
+                </div>
             </div>
+            
         );
       }
     }

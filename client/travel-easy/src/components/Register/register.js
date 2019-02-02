@@ -22,33 +22,36 @@ class Register extends Component {
 
     render() {
         return (
-            <div className="Register">
-            
-            <h1>Sign Up in Travel Made Simple it's too simple</h1>
+            <div>
+                <div className="background"/>
+                <div className="Register">
+                
+                <h1>Sign Up in Travel Made Simple it's too simple</h1>
 
-                <form onSubmit={this.handleSubmit}>                    
-                    <FormGroup controlId="name" bsSize="large">
-                        <label>Name</label>
-                        <FormControl autoFocus value={this.state.name} onChange={this.handleChange}/>
-                    </FormGroup>
+                    <form onSubmit={this.handleSubmit}>                    
+                        <FormGroup controlId="name" bsSize="large">
+                            <label>Name</label>
+                            <FormControl autoFocus value={this.state.name} onChange={this.handleChange}/>
+                        </FormGroup>
 
-                    <FormGroup controlId="username" bsSize="large">
-                        <label>Username</label>
-                        <FormControl autoFocus value={this.state.username} onChange={this.handleChange}/>
-                    </FormGroup>
+                        <FormGroup controlId="username" bsSize="large">
+                            <label>Username</label>
+                            <FormControl autoFocus value={this.state.username} onChange={this.handleChange}/>
+                        </FormGroup>
 
-                    <FormGroup controlId="email" bsSize="large">
-                        <label>Email</label>
-                        <FormControl type="email" value={this.state.email} onChange={this.handleChange}/>
-                    </FormGroup>
+                        <FormGroup controlId="email" bsSize="large">
+                            <label>Email</label>
+                            <FormControl type="email" value={this.state.email} onChange={this.handleChange}/>
+                        </FormGroup>
 
-                    <FormGroup controlId="password" bsSize="large">
-                        <label>Password</label>
-                        <FormControl value={this.state.password} onChange={this.handleChange} type="password" />
-                    </FormGroup>
-                    
-                    <Button block bsSize="large" onClick = {this.submit} type="submit">Start planning!</Button>
-                </form>
+                        <FormGroup controlId="password" bsSize="large">
+                            <label>Password</label>
+                            <FormControl value={this.state.password} onChange={this.handleChange} type="password" />
+                        </FormGroup>
+                        
+                        <Button block bsSize="large" onClick = {this.submit} type="submit">Start planning!</Button>
+                    </form>
+                </div>
             </div>
         );
       }
