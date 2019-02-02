@@ -5,15 +5,15 @@ router.get('/', (req,res) => res.json({
     message: 'API WORKING'
 }))
 
-var controller = require ('./ReviewController')
+var reviewController = require ('./reviewController')
 router.route('/reviews')
-    .get(controller.index)
-    .post(controller.new);
+    .get(reviewController.index)
+    .post(reviewController.new);
+
+var personaController = require ('./personaController')
 
 router.route('/persones')
-    .get(controller.index)
-    .post(controller.new)
-
-
+    .get(personaController.index)
+    .post(personaController.new)
 
 module.exports = router
