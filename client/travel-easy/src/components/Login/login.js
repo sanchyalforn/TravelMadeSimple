@@ -7,7 +7,9 @@ class Login extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        login: props.login
+        login: props.login,
+        email: String,
+        password: String
       };
       this.login = this.login.bind(this);
       this.register = this.register.bind(this);
@@ -29,14 +31,14 @@ class Login extends Component {
             <h1>Welcome to Travel Made Simple</h1>
 
                 <form onSubmit={this.handleSubmit}>                    
-                    <FormGroup controlId="email" bsSize="large">
-                        <label>Email</label>
-                        <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
+                    <FormGroup controlId="username" bsSize="large">
+                        <label>Username</label>
+                        <FormControl autoFocus value={this.state.email} onChange={this.handleChange}/>
                     </FormGroup>
                     
                     <FormGroup controlId="password" bsSize="large">
                         <label>Password</label>
-                        <FormControl value={this.state.password} onChange={this.handleChange} type="password" />
+                        <FormControl type="password" value={this.state.password} onChange={this.handleChange}/>
                     </FormGroup>
                     
                     <Button block bsSize="large" onClick = {this.login} type="submit">Login</Button>
