@@ -1,74 +1,66 @@
 let express = require('express')
 let app     = express()
 let fs      = require('fs')
-let io      = require('socket.io')(80)
-
 
 let router = require ('express').Router()
 
 var persones = fs.readFileSync('./db/usuaris.json')
 var reviews  = fs.readFileSync('./db/reviews.json')
 
+var mysql = require('mysql');
+    
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "admin",
+  password: "12341234",
+  database: "royal"
+});
+
+con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
+
 //donat un nom, tornar les seves reviews
-io.on("tornar_trips_nom", function(nom) {
-    let response = []
-    for (let i = 0; i < reviews.length; ++i) {
-        if (reviews[i].name == nom)
-            response.append(reviews[i])
-    }
-    io.emit("reviews_persona", response)
+router.get('/api/:name', (req,res) => {
+    let name = req.params.name
+    
+    query = "SELECT * FROM trips WHERE user = ?"
+    con.query(query, name, function(err,res) {
+        if (err)
+            callback(err,null);
+        callback(null, res)
+    })
+
 })
 
 //pillar trips/reviews d'una ciutat
-io.on("tornar_trips_lloc", function(nom) {
-    let response = []
-    for (let i = 0; i < reviews.length; ++i) {
-        if (reviews[i].city == nom)
-            response.append(reviews[i])
-    }
-    io.emit("reviews_ciutat", response)
+router.get('/api/:city', (req,res) => {
+    let city = req.params.place;
+    
+    query = "SELECT * FROM trips WHERE place = ?"
+    con.query(query, city, function(err,res) {
+        if (err)
+            callback(err,null);
+        callback(null, res)
+    })
 })
 
 //alta d'un usuari
-io.on("inscripcio_usuari", function(json) {
-    persones.append(json)
-    fs.writeFileSync('./db/usuaris.json', persones)
-})
+router.post('/api/:name&:password:&:mail', (req,res) => {
+    let nom = req.params.name
+    let pass = req.params.password
+    let mail = req.params.mail ? req.params.mail : "None"
 
-//nova review
-io.on("guardar_review", function(json) {
-    reviews.append(json)
-    fs.writeFileSync('./db/reviews.json')
-})
+    query = "INSERT INTO users (user,password,mail) values (?,?,?)";
 
-/*
-router.get('/api/:name', (req,res) => {
-    let response = []
-    for (let i = 0; i < reviews.length; ++i) {
-        if (reviews[i].name == $(req.params.name))
-            response.append(reviews[i])
-    }
-    res.json(reresponse)
-})
-
-router.get('/api/:trip', (req,res) => {
-    let response = []
-    for (let i = 0; i < reviews.length; ++i) {
-        if (reviews[i].city == $(req.params.trip))
-            response.append(reviews[i])
-    }
-    res.json(response)
-})
-
-router.post('/api/:name/:trip', (req,res) => {
-    reviews.append({
-        "user": $(req.params.name),
-        "place": "?",
-        "travel": "?",
-        "food": "?"
+    con.query(query, [name, pass,mail], function(err,res) {
+        if (err)
+            callback(err,null);
+        callback(null, res)
     })
-    fs.writeFileSync('./db/reviews.json',persones)
-})*/
+
+})
 
 
 app.listen(8080, () => console.log("server up!"))
