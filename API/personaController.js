@@ -1,4 +1,4 @@
-Persona = require('./PersonaModel')
+Persona = require('./personaModel')
 
 //index 
 exports.index = function(req,res) {
@@ -67,10 +67,10 @@ exports.modify = function (req,res) {
     Persona.findById(req.params.review_id, function (err, persona) {
         if (err)
             res.send(err)
-        persona.name     = req.body.city ? req.body.city : persona.city
-        persona.user     = req.body.user ? req.body.user : persona.user
-        persona.password = req.body.password
-        persona.email    = req.body.email
+    persona.name     = req.body.city ? req.body.city : persona.city
+    persona.user     = req.body.user ? req.body.user : persona.user
+    persona.password = req.body.password
+    persona.email    = req.body.email
         
         review.save (function (err) {
             if (err)

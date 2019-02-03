@@ -1,4 +1,4 @@
-Review = require('./ReviewModel')
+Review = require('./reviewModel')
 
 //index 
 exports.index = function(req,res) {

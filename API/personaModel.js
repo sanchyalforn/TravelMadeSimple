@@ -21,3 +21,6 @@ var personaSchema = mongoose.Schema ({
 })
 
 var Persona = module.exports = mongoose.model('persona', personaSchema)
+module.exports.get = function (callback, limit) {
+    Review.find(callback).limit(limit)
+}
