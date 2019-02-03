@@ -55,18 +55,14 @@ class Tips extends Component {
                 <div className="background"/>
                 <div className="cards">
                     <Card className="card2">
-                        <Card.Body>tip 1</Card.Body>
+                        <Card.Body>[Barcelona] TRAVEL: It's faster taking metro than bus. FOOD: non comercial places</Card.Body>
                     </Card>
                     <Card className="card2">
-                        <Card.Body>tip 2</Card.Body>
+                        <Card.Body>[Madrid] TRAVEL: Take the daily ticket for public transport. FOOD: non comercial places</Card.Body>
                     </Card>
                     <Card className="card2">
-                        <Card.Body>tip 3</Card.Body>
+                        <Card.Body>[London] TRAVEL: Expensive underground. FOOD: pubs > restaurants </Card.Body>
                     </Card>
-                    <Card className="card2">
-                        <Card.Body>tip 4</Card.Body>
-                    </Card>
-
                 </div>            
             </div>
         );

@@ -16,7 +16,31 @@ class Login extends Component {
     }
 
     login() {
-        // Add api call for make the comprovations
+        // event.preventDefault()
+        // var data = {
+        //     username: this.state.username,
+        //     password: this.state.password
+        // }
+        // var string = 'http://34.73.1.166/login/' + username + '/' + password; 
+        // fetch(string) {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // }).then(function(response) {
+        //     if (response.status >= 400) {
+        //         throw new Error("Bad response from server");
+        //     }
+        //     return response.json();
+        // }).then(function(data) {
+        //     console.log(data)
+        //     if (data === "success") {
+        //         this.props.history.push("/home/tips");
+        //     }
+        // }).catch(function(err) {
+        //     console.log(err)
+        // });   
         this.props.history.push("/home/tips");
     }
 
