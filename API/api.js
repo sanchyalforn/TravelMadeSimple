@@ -4,12 +4,14 @@ let app     = express()
 let router = require ('express').Router()
 
 var mysql = require('mysql');
-    
+var bodyParser = require('body-parser')
+
 var con = mysql.createConnection({
   host: "localhost",
-  user: "admin",
-  password: "1234321",
-  database: "royal"
+  user: "root",
+  password: "",
+  database: "royal",
+  insecureAuth : true
 });
 
 con.connect(function(err) {
@@ -18,45 +20,52 @@ con.connect(function(err) {
   });
 
 //donat un nom, tornar les seves reviews
-router.get('/api/:name', (req,res) => {
+app.get('/name/:name', (req,res) => {
     let name = req.params.name
-    
+    console.log(req.params)
     query = "SELECT * FROM trips WHERE user = ?"
-    con.query(query, name, function(err,res) {
+    con.query(query, name, function(err,resp) {
         if (err)
-            callback(err,null);
-        callback(null, res)
+            return null
+        console.log("holi")
+        res.send(resp)
+        return resp
     })
 
 })
 
 //pillar trips/reviews d'una ciutat
-router.get('/api/:city', (req,res) => {
-    let city = req.params.place;
-    
+app.get('/city/:city', (req,res) => {
+    let city = req.params.city;
+    console.log(req.params)
     query = "SELECT * FROM trips WHERE place = ?"
-    con.query(query, city, function(err,res) {
+    con.query(query, city, function(err,resp) {
         if (err)
-            callback(err,null);
-        callback(null, res)
+            return null
+        res.send(resp)
+        return resp
     })
 })
 
 //alta d'un usuari
-router.post('/api/:name&:password:&:mail', (req,res) => {
+app.post('/:name&:password&:mail', (req,res) => {
     let nom = req.params.name
     let pass = req.params.password
     let mail = req.params.mail ? req.params.mail : "None"
 
     query = "INSERT INTO users (user,password,mail) values (?,?,?)";
 
-    con.query(query, [name, pass,mail], function(err,res) {
+    con.query(query, [name, pass,mail], function(err,resp) {
         if (err)
-            callback(err,null);
-        callback(null, res)
+            return null
+        console.log("holi")
+        res.send(resp)
+        return resp
     })
 
 })
+
+app.get('/', (req, res) => res.send('Hello World!'))
 
 
 app.listen(8080, () => console.log("server up!"))
