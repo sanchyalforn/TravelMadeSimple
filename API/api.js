@@ -84,8 +84,8 @@ app.get('/login/:user/:pass', (req,res) => {
 
 //alta d'un usuari
 app.post('/user', (req,res) => {
-    let nom = req.query.name
-    let pass = req.query.password
+    let nom = req.query.user
+    let pass = req.query.pass
     let mail = req.query.mail ? req.query.mail : "None"
 
     query = "INSERT INTO users (user,password,mail) values (?,?,?);";
