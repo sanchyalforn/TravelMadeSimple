@@ -44,8 +44,8 @@ class Tips extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link onClick = { this.mytrips } style={ {color: "white"}}>My Trips</Nav.Link>
-                            <Nav.Link onClick = { this.tips } style={ {color: "white"}}>My Tips</Nav.Link>
+                            {/* <Nav.Link onClick = { this.mytrips } style={ {color: "white"}}>My Trips</Nav.Link> */}
+                            <Nav.Link onClick = { this.tips } style={ {color: "blue"}}>My Tips</Nav.Link>
                             <Nav.Link onClick = { this.searchtrip } style={ {color: "white"}}>Search Trip</Nav.Link>
                         </Nav>
                         <Button variant="outline-success" onClick = { this.newtip } className="margin-button">Add Tip</Button>

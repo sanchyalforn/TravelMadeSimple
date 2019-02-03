@@ -41,7 +41,7 @@ class NewTip extends Component {
                             <FormControl as="textarea" rows="4"/>
                         </FormGroup>
                         
-                        <Button block bsSize="large" onClick = {this.add} type="submit">Add Tip</Button>
+                        <Button block bsSize="large" onClick = {this.add} type="submit">Share!</Button>
                         <Button block variant="danger" bsSize="large" onClick = {this.cancel} type="button">Cancel</Button>
                     </form>
                 </div>

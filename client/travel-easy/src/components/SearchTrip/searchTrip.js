@@ -39,9 +39,9 @@ class NewTrip extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link onClick = { this.mytrips } style={ {color: "white"}}>My Trips</Nav.Link>
+                            {/* <Nav.Link onClick = { this.mytrips } style={ {color: "white"}}>My Trips</Nav.Link> */}
                             <Nav.Link onClick = { this.tips } style={ {color: "white"}}>My Tips</Nav.Link>
-                            <Nav.Link onClick = { this.newtrip } style={ {color: "white"}}>Search Trip</Nav.Link>
+                            <Nav.Link onClick = { this.newtrip } style={ {color: "blue"}}>Search Trip</Nav.Link>
                         </Nav>
                         <Button variant="outline-warning" onClick = { this.logout }>Sign Out</Button>
                     </Navbar.Collapse>

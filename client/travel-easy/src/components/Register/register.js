@@ -17,7 +17,7 @@ class Register extends Component {
     }
 
     submit() {
-        this.props.history.push("/home");
+        this.props.history.push("/home/tips ");
     }
 
     render() {

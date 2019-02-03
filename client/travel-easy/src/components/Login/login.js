@@ -17,7 +17,7 @@ class Login extends Component {
 
     login() {
         // Add api call for make the comprovations
-        this.props.history.push("/home");
+        this.props.history.push("/home/tips");
     }
 
     register() {
