@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Button, Card } from "react-bootstrap";
-import './trips.css';
+import './tips.css';
 
-class Trips extends Component {
+class Tips extends Component {
   
     constructor(props) {
         super(props);
@@ -12,9 +12,9 @@ class Trips extends Component {
         this.mytrips = this.mytrips.bind(this);
         this.tips = this.tips.bind(this);
         this.searchtrip = this.searchtrip.bind(this);
-        this.newtrip = this.newtrip.bind(this);
+        this.newtip = this.newtip.bind(this);
         this.logout = this.logout.bind(this);
-      }    
+    }    
   
     mytrips() {
         this.props.history.push("/home/my-trips");
@@ -23,22 +23,22 @@ class Trips extends Component {
     tips() {
         this.props.history.push("/home/tips");
     }
-
+  
     searchtrip() {
         this.props.history.push("/home/search-trip");
     }
-
+  
     logout() {
         this.props.history.push("/");
     }
 
-    newtrip() {
-        this.props.history.push("/home/new-trip");
+    newtip() {
+        this.props.history.push("/home/new-tip");
     }
-
-      render() {
-          return (
-              <div>
+  
+    render() {
+        return (
+            <div>
                 <Navbar bg="dark" expand="lg">
                     <Navbar.Brand style={ {color: "orange"} }>T M S</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -48,31 +48,29 @@ class Trips extends Component {
                             <Nav.Link onClick = { this.tips } style={ {color: "white"}}>My Tips</Nav.Link>
                             <Nav.Link onClick = { this.searchtrip } style={ {color: "white"}}>Search Trip</Nav.Link>
                         </Nav>
-                        <Button variant="outline-success" onClick = { this.newtrip } className="margin-button">Add Trip</Button>
+                        <Button variant="outline-success" onClick = { this.newtip } className="margin-button">Add Tip</Button>
                         <Button variant="outline-warning" onClick = { this.logout }>Sign Out</Button>
                     </Navbar.Collapse>
                 </Navbar>
                 <div className="background"/>
                 <div className="cards">
                     <Card className="card2">
-                        <Card.Body>Trip 1</Card.Body>
+                        <Card.Body>tip 1</Card.Body>
                     </Card>
                     <Card className="card2">
-                        <Card.Body>Trip 2</Card.Body>
+                        <Card.Body>tip 2</Card.Body>
                     </Card>
                     <Card className="card2">
-                        <Card.Body>Trip 3</Card.Body>
+                        <Card.Body>tip 3</Card.Body>
                     </Card>
                     <Card className="card2">
-                        <Card.Body>Trip 4</Card.Body>
+                        <Card.Body>tip 4</Card.Body>
                     </Card>
 
-                </div>
-
-                
-              </div>
-          );
+                </div>            
+            </div>
+        );
     }
 }
 
-export default Trips;
+export default Tips;

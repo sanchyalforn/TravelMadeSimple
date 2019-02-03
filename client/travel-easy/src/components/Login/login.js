@@ -35,12 +35,12 @@ class Login extends Component {
                     <form onSubmit={this.handleSubmit}>                    
                         <FormGroup controlId="username" bsSize="large">
                             <label>Username</label>
-                            <FormControl autoFocus value={this.state.email} onChange={this.handleChange}/>
+                            <FormControl autoFocus onChange={this.handleChange}/>
                         </FormGroup>
                         
                         <FormGroup controlId="password" bsSize="large">
                             <label>Password</label>
-                            <FormControl type="password" value={this.state.password} onChange={this.handleChange}/>
+                            <FormControl type="password" onChange={this.handleChange}/>
                         </FormGroup>
                         
                         <Button block bsSize="large" onClick = {this.login} type="submit">Login</Button>
