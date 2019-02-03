@@ -1,18 +1,14 @@
 let express = require('express')
 let app     = express()
-let fs      = require('fs')
 
 let router = require ('express').Router()
-
-var persones = fs.readFileSync('./db/usuaris.json')
-var reviews  = fs.readFileSync('./db/reviews.json')
 
 var mysql = require('mysql');
     
 var con = mysql.createConnection({
   host: "localhost",
   user: "admin",
-  password: "12341234",
+  password: "1234321",
   database: "royal"
 });
 
