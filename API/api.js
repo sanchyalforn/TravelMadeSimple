@@ -6,6 +6,10 @@ let router = require ('express').Router()
 var mysql = require('mysql');
 var bodyParser = require('body-parser')
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -23,7 +27,7 @@ con.connect(function(err) {
 app.get('/name/:name', (req,res) => {
     let name = req.params.name
     console.log(req.params)
-    query = "SELECT * FROM trips WHERE user = ?"
+    query = "SELECT * FROM trips WHERE user = ?;"
     con.query(query, name, function(err,resp) {
         if (err)
             return null
@@ -31,38 +35,72 @@ app.get('/name/:name', (req,res) => {
         res.send(resp)
         return resp
     })
-
 })
 
 //pillar trips/reviews d'una ciutat
 app.get('/city/:city', (req,res) => {
     let city = req.params.city;
     console.log(req.params)
-    query = "SELECT * FROM trips WHERE place = ?"
+    query = "SELECT * FROM trips WHERE place = '"+ city +"';"
     con.query(query, city, function(err,resp) {
-        if (err)
-            return null
+        if (err){
+            console.log(err)
+            return err
+        }
+        res.send(resp)
+        return resp
+    })
+})
+
+app.get('/check/:user', (req,res) => {
+    let user = req.params.name
+    console.log(req.params)
+
+    query = "SELECT * FROM users WHERE user = '" + user +"'";
+    con.query(query, function(err,resp) {
+        if (err){
+            console.log(err)
+            return err
+        }
+        res.send(resp)
+        return resp
+    })
+})
+
+
+app.get('/login/:user/:pass', (req,res) => {
+    let user = req.params.name
+    let pass = req.params.password
+
+    query = "SELECT * FROM users WHERE user = '"+ user +"' AND password = '"+ pass +"';"
+    con.query(query, function(err,resp) {
+        if (err){
+            console.log(err)
+            return err
+        }
         res.send(resp)
         return resp
     })
 })
 
 //alta d'un usuari
-app.post('/:name&:password&:mail', (req,res) => {
-    let nom = req.params.name
-    let pass = req.params.password
-    let mail = req.params.mail ? req.params.mail : "None"
+app.post('/user', (req,res) => {
+    let nom = req.query.name
+    let pass = req.query.password
+    let mail = req.query.mail ? req.query.mail : "None"
 
-    query = "INSERT INTO users (user,password,mail) values (?,?,?)";
+    query = "INSERT INTO users (user,password,mail) values (?,?,?);";
 
-    con.query(query, [name, pass,mail], function(err,resp) {
-        if (err)
-            return null
+    con.query(query, [nom, pass,mail], function(err,resp) {
+        console.log(err)
+        if (err){
+            console.log(err)
+            return err
+        }
         console.log("holi")
         res.send(resp)
         return resp
     })
-
 })
 
 app.get('/', (req, res) => res.send('Hello World!'))
