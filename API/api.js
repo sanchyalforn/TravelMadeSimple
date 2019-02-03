@@ -12,10 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "",
+  user: "travelmadesimple",
+  password: "123456",
   database: "royal",
-  insecureAuth : true
 });
 
 con.connect(function(err) {
@@ -53,8 +52,8 @@ app.get('/city/:city', (req,res) => {
 })
 
 app.get('/check/:user', (req,res) => {
-    let user = req.params.name
-    console.log(req.params)
+    let user = req.params.user
+    console.log(user)
 
     query = "SELECT * FROM users WHERE user = '" + user +"'";
     con.query(query, function(err,resp) {
@@ -69,10 +68,10 @@ app.get('/check/:user', (req,res) => {
 
 
 app.get('/login/:user/:pass', (req,res) => {
-    let user = req.params.name
-    let pass = req.params.password
-
-    query = "SELECT * FROM users WHERE user = '"+ user +"' AND password = '"+ pass +"';"
+    let user = req.params.user
+    let pass = req.params.pass
+    console.log(req.params)
+    query = "SELECT count(*) as nouser FROM users WHERE user = '"+ user +"' AND password = '"+ pass +"';"
     con.query(query, function(err,resp) {
         if (err){
             console.log(err)
@@ -106,4 +105,4 @@ app.post('/user', (req,res) => {
 app.get('/', (req, res) => res.send('Hello World!'))
 
 
-app.listen(8080, () => console.log("server up!"))
+app.listen(80, () => console.log("server up!"))
